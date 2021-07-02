@@ -1,0 +1,38 @@
+.footer{
+  /* margin-top: 1rem;
+  padding: 1rem; */
+  background-color: #F2F3F6;
+  /* position: fixed; */
+  /* bottom: 0;
+  left: 0;
+  width: 100%; */
+}
+p{
+  color: #616161;
+}
+.orange-text{
+  color:#FF452B !important;
+  text-decoration: none;
+}
+
+.btn-orange{
+  box-sizing: border-box;
+  color:#FF452B !important;
+  border-color: rgb(255, 69, 43) !important;
+  border-radius: 10;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.bg-orange{
+  background-color: #FF452B;
+}
+
+.svg-orange{
+  fill:#FF452B;
+}
+Navbar{
+  box-shadow: #FF452B;
+}
