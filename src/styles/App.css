@@ -1,38 +1,215 @@
-.footer{
+.footer {
   /* margin-top: 1rem;
   padding: 1rem; */
-  background-color: #F2F3F6;
-  /* position: fixed; */
-  /* bottom: 0;
-  left: 0;
-  width: 100%; */
+  background-color: #f2f3f6;
+  /* position: fixed;  */
+  bottom: 0;
+  /* left: 0; */
+  /* width: 100%; */
 }
-p{
+p {
   color: #616161;
 }
-.orange-text{
-  color:#FF452B !important;
+.orange-text {
+  color: #ff452b !important;
   text-decoration: none;
 }
 
-.btn-orange{
+.btn-orange {
   box-sizing: border-box;
-  color:#FF452B !important;
+  color: #ff452b !important;
   border-color: rgb(255, 69, 43) !important;
-  border-radius: 10;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-radius: 10px;
+}
+.bg-orange {
+  background-color: #ff452b;
 }
 
-.bg-orange{
-  background-color: #FF452B;
+.svg-orange {
+  fill: #ff452b;
+}
+Navbar {
+  box-shadow: #ff452b;
+}
+.carousel-indicators li {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ff452b;
+}
+li {
+  list-style-type: none;
 }
 
-.svg-orange{
-  fill:#FF452B;
+.PokeCard:hover {
+  background-color: #ff442b15;
 }
-Navbar{
-  box-shadow: #FF452B;
+
+.btn-fighting, .btn-ground {
+  border-color: rgb(207, 103, 5);
+  color: rgb(128, 62, 0);
+  padding: 0px 4px 2px 4px;
+  border-radius: 11px;
+}
+
+.btn-fighting:hover, .btn-ground:hover {
+  background-color: rgb(207, 103, 5);
+  color: white;
+}
+.btn-poison {
+  border-color: rgb(160, 4, 139);
+  color: rgb(95, 1, 83);
+  padding: 0px 4px 2px 4px;
+  border-radius: 11px;
+}
+
+.btn-poison:hover {
+  background-color: rgb(160, 4, 139);
+  color: white;
+}
+.btn-rock,
+.btn-steel {
+  border-color: rgb(78, 77, 78);
+  color: rgb(68, 68, 68);
+  padding: 0px 4px 2px 4px;
+  border-radius: 11px;
+}
+
+.btn-rock:hover,
+.btn-steel:hover {
+  background-color: rgb(78, 77, 78);
+  color: white;
+}
+.btn-bug {
+  border-color: rgb(4, 180, 4);
+  color: rgb(8, 148, 8);
+  padding: 0px 4px 2px 4px;
+  border-radius: 11px;
+}
+
+.btn-bug:hover {
+  background-color: rgb(4, 180, 4);
+  color: white;
+}
+.btn-ghost,
+.btn-psychic {
+  border-color: rgb(211, 132, 200);
+  color: rgb(34, 4, 30);
+  padding: 0px 4px 2px 4px;
+  border-radius: 11px;
+}
+
+.btn-ghost:hover,
+.btn-psychic:hover {
+  background-color: rgb(211, 132, 200);
+  color: rgb(53, 52, 52);
+}
+
+.btn-dragon {
+  border-color: rgb(21, 219, 160);
+  color: rgb(0, 175, 123);
+  padding: 0px 4px 2px 4px;
+  border-radius: 11px;
+}
+
+.btn-dragon:hover {
+  background-color: rgb(21, 219, 160);
+  color: black;
+}
+.btn-fairy {
+  border-color: rgb(253, 158, 248);
+  color: rgb(182, 112, 178);
+  padding: 0px 4px 2px 4px;
+  border-radius: 11px;
+}
+
+.btn-fairy:hover {
+  background-color: rgb(253, 158, 248);
+  color: rgb(71, 69, 69);
+}
+.btn-normal {
+  border-color: rgb(211, 211, 211);
+  color: rgb(112, 112, 112);
+  padding: 0px 4px 2px 4px;
+  border-radius: 11px;
+}
+
+.btn-normal:hover {
+  background-color: rgb(211, 211, 2111);
+  color: rgb(71, 69, 69);
+}
+.btn-flying {
+  border-color: #5bc0de;
+  color: #408094;
+  padding: 0px 4px 2px 4px;
+  border-radius: 11px;
+}
+
+.btn-flying:hover {
+  background-color: #5bc0de;
+  color: rgb(71, 69, 69);
+}
+.btn-fire {
+  border-color: #ec742e;
+  color: #d45105;
+  padding: 0px 4px 2px 4px;
+  border-radius: 11px;
+}
+
+.btn-fire:hover {
+  background-color: #ec742e;
+  color: rgb(255, 255, 255);
+}
+.btn-water,
+.btn-ice {
+  border-color: #3088d4;
+  color: #0275d8;
+  padding: 0px 4px 2px 4px;
+  border-radius: 11px;
+}
+
+.btn-water:hover,
+.btn-ice:hover {
+  background-color: #3088d4;
+  color: rgb(255, 255, 255);
+}
+.btn-grass {
+  border-color: rgb(53, 141, 53);
+  color: #2fa72f;
+  padding: 0px 4px 2px 4px;
+  border-radius: 11px;
+}
+
+.btn-grass:hover {
+  background-color: #5cb85c;
+  color: rgb(255, 255, 255);
+}
+.btn-electric {
+  border-color: #fbcc04;
+  color: rgb(97, 97, 97);
+  padding: 0px 4px 2px 4px;
+  border-radius: 11px;
+}
+
+.btn-electric:hover {
+  background-color: #fbcc04;
+  color: rgb(97, 97, 97);
+}
+.btn-dark,
+.btn-unknown,
+.btn-shadow {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+  padding: 0px 4px 2px 4px;
+  border-radius: 11px;
+}
+.btn-dark:hover,
+.btn-unknown:hover,
+.btn-shadow:hover {
+  color: rgb(185, 183, 183);
+  background-color: #1e2124;
+  border-color: #343a40;
+  padding: 0px 4px 2px 4px;
+  border-radius: 11px;
 }

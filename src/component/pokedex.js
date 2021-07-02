@@ -1,32 +1,30 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { PokeCard } from "./pokeCard";
-
-import loaderGif from "../img/loader.gif";
+import pokeball from "../img/source.gif"
+import pokedex from "../img/pokedex.png";
 
 export const Pokedex = () => {
   const { store } = useContext(Context);
+  
   return (
     <>
       <div className="container pt-3 ">
-        {/* <h1 className="orange-text text-capitalize">Pokedex</h1>
-        <div className="row flex-nowrap overflow-auto">
-          {store['pokes'].length === 0 ? (
-            <div className="mx-auto my-auto">
-              <img src={loaderGif} alt="Loader Gif" />{" "}
-              <p className="orange-text px-5">Loading...</p>
+        <h1 className="orange-text text-center">Pokedex</h1>
+        <div className="row justify-content-center d-flex mb-5">
+          {store.activePokemons.length === 0? (
+            <div className="text-center">
+              <p className=" px-5 ">Selecciona generación para empezar...</p>
+              <img src={pokedex} alt="Loader Gif" width="200" />{" "}
             </div>
-          ) : (
-            store['pokes'].map((item, index) => {
-              return (
-                <PokeCard
-                  key={index}
-                  pos={index}
-                />
-              );
-            })
+          ) : (store.downloadCompleted?
+             store.activePokemons.map((pokemon, index) => {
+               return <li key={index}><PokeCard key={index} info={pokemon}/></li>
+             })
+            :<div className="text-center my-auto mx-auto"><img  src={pokeball} alt="Pokeball"/></div>
+            
           )}
-        </div> */}
+        </div>
       </div>
     </>
   );

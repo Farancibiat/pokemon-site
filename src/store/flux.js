@@ -4,80 +4,97 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       favorites: [],
-      generations:[],
+      generations: [],
       activePokemons: [],
+      downloadCompleted: false,
+      esTypeNames:['Normal','Lucha','Volador','Veneno','Tierra','Roca','Bicho','Fantasma','Acero','Fuego','Agua','Planta','Eléctrico','Psíquico','Hielo','Dragón','Siniestro','Hada','???','Sombra']
     },
     actions: {
-      
-      loadGenerations:()=>{
-        axios.get(`https://pokeapi.co/api/v2/generation`)
+      // loadGenerations loads the generations data [{name: ?, url:?},...]
+      // of the API so the App can render all generations including new ones
+      loadGenerations: () => {
+        axios
+          .get(`https://pokeapi.co/api/v2/generation`)
+          .then((res) => {
+            setStore({ generations: res.data.results });
+          })
+          .catch((error) => {
+            console.log("a.loadGenerations error: " + error);
+          });
+      },
+
+      // changeGen Loads the selected Generetion pokemons to the activePokemons
+      // variable, so it can be rendered on Pokedex
+
+      changeGen: (event) => {
+        console.log(event.target.value);
+        if (event.target.value !== 0) {
+            setStore({downloadCompleted:false})
+          axios
+            .get(event.target.value)
             .then((res) => {
-              setStore({ generations: res.data.results });
+              setStore({ activePokemons: res.data.pokemon_species });
+              getActions().completeData();
             })
             .catch((error) => {
-              console.log("FullPokedex error: " + error);
-            }); 
+              console.log("a.changeGen error: " + error);
+            });
+        }
       },
-      changeGen:(event)=>{
-          console.log(event.target.value)
-        if(event.target.value!==0){
-          
-        axios.get(event.target.value)
-        .then((res) => {
-          setStore({ activePokemons: res.data.pokemon_species });
-          console.log('Active Pokemons: '+res.data.pokemon_species[0].name)
+      completeData: () => {
+        let receiptedFetchs=0;
+        getStore().activePokemons.forEach((pokeRef, arrIndex) => {
+          let details = {};
+          let aux = pokeRef.url.split("/");
+          let index = aux[aux.length - 2];
+
+          axios
+            .get(`https://pokeapi.co/api/v2/pokemon/${index}`)
+            .then((res) => {
+              Object.assign(details, res.data);
+              axios
+                .get(`https://pokeapi.co/api/v2/pokemon-species/${index}`)
+                .then((answ) => {
+                  Object.assign(details, answ.data);
+                  Object.assign(details,{isFav:false})
+                  Object.assign(getStore().activePokemons[arrIndex], details);
+                  receiptedFetchs++
+                  if(receiptedFetchs===(getStore().activePokemons.length)){
+                  getStore().activePokemons.sort((a,b)=>{
+                      if(a.id<b.id)
+                      return -1
+                      if(a.id<b.id)
+                      return 1
+                      else
+                      return 0
+                  })
+                  setStore({downloadCompleted:true})
+                  }
+                })
+                .catch((err) => {
+                  console.log("a.completeData/pokemon error: " + err);
+                });
+            })
+            .catch((error) => {
+              console.log("a.completeData/pokemon error: " + error);
+            });
+        });
+      },
+
+      addFav: (pokeInfo) => {
+        let aux=getStore().favorites.filter((pokemon)=>{
+            if(pokemon.id!==pokeInfo.id)
+            return pokemon
         })
-        .catch((error) => {
-          console.log("FullPokedex error: " + error);
-        }); 
-    } 
-    },
-    //   loadPokedex: () => {
-    //     axios({
-    //       method: "GET",
-    //       url: `https://pokeapi.co/api/v2/pokemon`,
-    //       params: { limit:1117, offset:0}
-    //     })
-    //       .then((res) => {
-    //         let aux = [...getStore().pokes, ...res.data.results];
-    //         setStore({ pokes: res.data.results });
-    //         setStore({ loadedIndex: index });
-    //         getActions().completeData(index)
-    //       })
-    //       .catch((error) => {
-    //         console.log("/pokemon error: " + error);
-    //       });
-    //   },
-      completeData:(id)=>{
-          for(let i=id;i<(id+6);i++){
-            axios({
-                method: "GET",
-                url: `https://pokeapi.co/api/v2/pokemon/${i+1}`
-              })
-              .then((res) => {
-                  getActions().modifyState(id, i)
-                  let aux=Object.assign(getStore().pokes[i],res.data)
-                  console.log(getStore().pokes)
-              })
-
-          }
-      },
-      
-      addFav: (typ, ind) => {
-        let aux = getStore().favorites.concat({ type: typ, index: ind });
-        setStore({ favorites: aux });
-        // localStorage.setItem("favorites", aux);
+        setStore({ favorites: [...aux,pokeInfo] });
+              
       },
 
-      delFav: (typ, ind) => {
-        let aux = getStore().favorites.filter(
-          (item) => !(item.type === typ && item.index === ind)
-        );
-        setStore({ favorites: aux });
-        
+      delFav: (pokeInfo) => {
+        setStore({ favorites: getStore().favorites.filter((item) => (item.id !== pokeInfo.id)) });
+            
       }
-    }
-}
-
+    },
+  };
 };
 export default getState;

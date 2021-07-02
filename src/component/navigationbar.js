@@ -12,25 +12,29 @@ export const NavigationBar = () => {
 
   return (
     <>
-      <Navbar  expand="lg">
-          <div className="container">
-        <Navbar.Brand href="#home">
-          <Link className="text-center orange-text" to="/">
-            <img src={logo} alt="Pokemón logo" width="180" />
-          </Link>
-        </Navbar.Brand>
-        <Navbar.Toggle
-          className="btn-orange orange-text"
-          variant="outline-light"
-          aria-controls="basic-navbar-nav"
-        />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <FavButton />
-          </Nav>
-        </Navbar.Collapse>
+      <Navbar expand="lg">
+        <div className="container">
+          <Navbar.Brand href="#home">
+            <Link className="text-center orange-text" to="/">
+              <img src={logo} alt="Pokemón logo" width="180" />
+            </Link>
+          </Navbar.Brand>
+          <Navbar.Toggle
+            className="btn-orange orange-text"
+            variant="outline-light"
+            aria-controls="basic-navbar-nav"
+          />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ml-auto">
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
+              <Link className="nav-link" to="/favoritos">
+                Ver Favoritos
+              </Link>
+              <FavButton />
+            </Nav>
+          </Navbar.Collapse>
         </div>
       </Navbar>
     </>

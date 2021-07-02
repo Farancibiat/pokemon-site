@@ -5,6 +5,7 @@ import injectContext from "./store/appContext";
 
 import "./styles/App.css";
 import { Home } from "./pages/home"
+import { Favorites } from "./pages/favorites"
 import { NavigationBar } from "./component/navigationbar";
 import { Footer } from "./component/footer";
 
@@ -22,10 +23,10 @@ const Layout = () => {
                     <Route exact path="/">
                         <Home />
                     </Route>
-                    {/* <Route exact path="/characters/:uid">
-                        <Character id="uid" />
+                    <Route exact path="/favoritos">
+                        <Favorites/>
                     </Route>
-                    <Route exact path="/vehicles/:uid">
+                    {/* <Route exact path="/vehicles/:uid">
                         <Vehicle id="uid" />
                     </Route>
                     <Route exact path="/planets/:uid">
