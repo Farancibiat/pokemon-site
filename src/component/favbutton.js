@@ -13,7 +13,7 @@ export const FavButton = () => {
     return (
         <>
             <Dropdown>
-                <Dropdown.Toggle className="btn-orange" variant="outline-light" id="dropdown-basic">
+                <Dropdown.Toggle  variant="outline-orange" id="dropdown-basic">
                     Guardados <span className="badge rounded-pill bg-orange text-light">{store.favorites.length}</span>
                 </Dropdown.Toggle>
 

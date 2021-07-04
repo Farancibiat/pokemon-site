@@ -15,6 +15,22 @@ p {
   text-decoration: none;
 }
 
+/* this is a btn orange CSS with same characteristics as a bootstrap one */
+
+.btn-outline-orange{color:#ff452b;border-color:#ff452b}
+.btn-outline-orange:hover{color:#fff;background-color:#ff452b;border-color:#ff452b}
+.btn-outline-orange.focus,
+.btn-outline-orange:focus{box-shadow:0 0 0 .2rem rgb(255, 66, 41,50%)}
+.btn-outline-orange.disabled,
+.btn-outline-orange:disabled{color:#ff452b;background-color:transparent}
+.btn-outline-orange:not(:disabled):not(.disabled).active,
+.btn-outline-orange:not(:disabled):not(.disabled):active,.show>
+.btn-outline-orange.dropdown-toggle{color:#fff;background-color:#ff452b;border-color:#ff452b}
+.btn-outline-orange:not(:disabled):not(.disabled).active:focus,
+.btn-outline-orange:not(:disabled):not(.disabled):active:focus,.show>
+.btn-outline-orange.dropdown-toggle:focus{box-shadow:0 0 0 .2rem rgb(255, 69, 43,50%)}
+
+
 .btn-orange {
   box-sizing: border-box;
   color: #ff452b !important;
@@ -28,15 +44,18 @@ p {
 .svg-orange {
   fill: #ff452b;
 }
+
 Navbar {
   box-shadow: #ff452b;
 }
+
 .carousel-indicators li {
   width: 15px;
   height: 15px;
   border-radius: 50%;
   background-color: #ff452b;
 }
+
 li {
   list-style-type: none;
 }
@@ -44,6 +63,8 @@ li {
 .PokeCard:hover {
   background-color: #ff442b15;
 }
+
+/* In this section all the type button colors are configured  */
 
 .btn-fighting, .btn-ground {
   border-color: rgb(207, 103, 5);

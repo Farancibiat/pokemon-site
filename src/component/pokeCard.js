@@ -11,10 +11,7 @@ export const PokeCard = (props) => {
 
   return (
     <>
-      <Card
-        className="PokeCard mx-3 my-3"
-        style={{ width: "180px" }}
-      >
+      <Card className="PokeCard mx-3 my-3" style={{ width: "180px" }}>
         <Card.Header className="py-0 px-0">
           <Carousel interval={null}>
             <Carousel.Item>
@@ -32,38 +29,39 @@ export const PokeCard = (props) => {
               />
             </Carousel.Item>
           </Carousel>
-        </Card.Header>
-            <div clasName="container">
-          <div className="row">
+        </Card.Header >
+        <div clasName="container px-2 wrap">
+          <div className="row mx-0">
             <div className="col-12">
-              <div>N°: {props.info.id}</div>
+              <div className="text-muted">N°: {props.info.id}</div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-12">
-              <Card.Title className="orange-text">
+          <div className="row  mx-0">
+            <div className="col-12 ">
+              <Card.Title className="orange-text mb-0">
                 {props.info.name.charAt(0).toUpperCase() +
                   props.info.name.slice(1)}
               </Card.Title>
             </div>
           </div>
-          <div className="row mx-0 wrap">
-            <div className="col-12 col-sm-3 px-0">
+          <div className="row my-1 mx-0">
+            <div className="col-12">
               <div className="text-muted">Tipo:</div>
             </div>
-
+          </div>
+          <div className="row mx-0 text-center">
             {props.info.types.map((type) => {
               return (
-                <div className="col-12 col-sm-4 px-0">
+                <div className="col-12 col-sm-6 px-0">
                   <TypeDesign type={type.type.name} url={type.type.url} />
                 </div>
               );
             })}
           </div>
-          <div className="row my-2 ">
-            <div className="col-12 col-sm-6 text-center ">
+          <div className="row my-3  mx-0">
+            <div className="col-12 col-sm-6">
               {/* <LinkContainer to={`/character/${props.position}`}> */}
-              <Button className="btn-orange " variant="outline-light">
+              <Button  variant="outline-orange">
                 Detalles
               </Button>
               {/* </LinkContainer> */}
@@ -71,15 +69,14 @@ export const PokeCard = (props) => {
 
             <div className="col-12 col-sm-6 text-center">
               <Button
-                className="btn-orange"
-                variant="outline-light"
+                variant="outline-orange"
                 onClick={() => actions.addFav(props.info)}
               >
                 <FontAwesomeIcon icon={faHeart} />
               </Button>
             </div>
           </div>
-          </div>
+        </div>
       </Card>
     </>
   );
