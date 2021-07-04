@@ -14,7 +14,7 @@ export const TypeDesign = (props) => {
     nameIndex=20
     return (
         <>
-        <Button variant={props.type}>{store.esTypeNames[parseInt(nameIndex-1)]}</Button>
+        <Button  className="mx-3" variant={props.type}>{store.esTypeNames[parseInt(nameIndex-1)]}</Button>
 
             
 

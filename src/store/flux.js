@@ -7,7 +7,17 @@ const getState = ({ getStore, getActions, setStore }) => {
       generations: [],
       activePokemons: [],
       downloadCompleted: false,
-      esTypeNames:['Normal','Lucha','Volador','Veneno','Tierra','Roca','Bicho','Fantasma','Acero','Fuego','Agua','Planta','Eléctrico','Psíquico','Hielo','Dragón','Siniestro','Hada','???','Sombra']
+      esTypeNames:['Normal','Lucha','Volador','Veneno','Tierra','Roca','Bicho','Fantasma','Acero','Fuego','Agua','Planta','Eléctrico','Psíquico','Hielo','Dragón','Siniestro','Hada','???','Sombra'],
+      sprites:{
+        'front_default': 'Frente Estandar',
+        'back_default': 'Atrás Estandar',
+        'front_female':'Frente Hembra Estandar',
+        'back_female': 'Atras Hembra Estandar',
+        'front_shiny': "Frente Shiny",
+        'back_shiny': 'Atrás Shiny',
+        'front_female_shiny':'Frente Hembra Shiny',
+        'back_female_shiny': 'Atras Hembra Shiny',
+      }
     },
     actions: {
       // loadGenerations loads the generations data [{name: ?, url:?},...]
@@ -83,8 +93,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       addFav: (pokeInfo) => {
         let aux=getStore().favorites.filter((pokemon)=>{
+          console.log(pokeInfo)
             if(pokemon.id!==pokeInfo.id)
             return pokemon
+            else
+            return 
         })
         setStore({ favorites: [...aux,pokeInfo] });
               

@@ -49,6 +49,11 @@ Navbar {
   box-shadow: #ff452b;
 }
 
+.bg-caption{
+  background-color:#d4d4d4c0;
+  border-radius: 10px;
+}
+
 .carousel-indicators li {
   width: 15px;
   height: 15px;

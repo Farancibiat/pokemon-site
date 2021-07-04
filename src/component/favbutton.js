@@ -3,7 +3,6 @@ import { Context } from "../store/appContext";
 import { Dropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Link } from "react-router-dom";
 
 
 
@@ -26,9 +25,7 @@ export const FavButton = () => {
                                     <Dropdown.Item>
                                         <div className="row">
                                             <div className="col-6">
-                                                <Link to={`/${pokemon.id}`}>
                                                     {pokemon.name.toUpperCase()}
-                                                </Link>
                                             </div>
                                             <div className="col-6 d-flex justify-content-end">
                                                 <span key={`${ind}`} onClick={() => actions.delFav(pokemon)}>

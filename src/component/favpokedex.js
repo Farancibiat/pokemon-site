@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { PokeCard } from "./pokeCard";
-import pokeball from "../img/source.gif"
 import HoumLogo from "../img/loader.gif";
 
 export const FavPokedex = () => {
