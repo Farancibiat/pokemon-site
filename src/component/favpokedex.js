@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { PokeCard } from "./pokeCard";
 import HoumLogo from "../img/loader.gif";
 
 export const FavPokedex = () => {
-  const { store } = useContext(Context);
+  const { store, actions } = useContext(Context);
   
+useEffect(()=>actions.resetActivePokemons(),[])
+
   return (
     <>
       <div className="container pt-3 ">

@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 import logo from "../img/Pokmon.png";
 import { FavButton } from "./favbutton";
 import { Navbar, Nav } from "react-bootstrap";
-// import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 
-// import { Context } from "../store/appContext";
+
 
 export const NavigationBar = () => {
-  // const { store, actions } = useContext(Context);
 
   return (
     <>
