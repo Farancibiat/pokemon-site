@@ -23,8 +23,11 @@ export const SearchBar = () => {
       })
       }
       </Form.Control>
-{/*         
-        <input type="text"></input> */}
+      {store.downloadCompleted?
+      <Form.Group className="my-3">
+      <Form.Control type="text" placeholder="Ingresa un nombre" onChange={e=>actions.setSearch(e.target.value)}/>
+      <Form.Text>Busca el nombre del Pókemon dentro de la generación que elegiste</Form.Text>
+      </Form.Group>:""}
       </div>
     </>
   );

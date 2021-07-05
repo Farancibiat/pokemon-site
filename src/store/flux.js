@@ -7,6 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       generations: [],
       activePokemons: [],
       downloadCompleted: false,
+      search:"",
       esTypeNames:['Normal','Lucha','Volador','Veneno','Tierra','Roca','Bicho','Fantasma','Acero','Fuego','Agua','Planta','Eléctrico','Psíquico','Hielo','Dragón','Siniestro','Hada','???','Sombra'],
       sprites:{
         'front_default': 'Frente Estandar',
@@ -53,6 +54,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         else{
           setStore({downloadCompleted:false})
         }
+      },
+      setSearch:(name)=>{
+        setStore({search: name})
       },
       completeData: () => {
         let receiptedFetchs=0;
