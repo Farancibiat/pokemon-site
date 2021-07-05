@@ -1,12 +1,16 @@
-# Getting Started with Create React App
+# Basic PokeApi 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was developed for a job apply test and it's using pokeapi.co APi. 
 
-## Available Scripts
 
-In the project directory, you can run:
+## ONLINE DEMO
 
-### `npm start`
+A demo it's launched at Heroku basic hosting, you can see it here:  [Demo](https://houm-test-pokeapi.herokuapp.com/)
+
+## LOCAL HOST
+
+Also, you can clone the project at your computer, open the project on a terminal, go into  and run:
+### 1.`npm i` `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
