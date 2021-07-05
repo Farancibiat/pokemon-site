@@ -5,7 +5,7 @@ This project was developed for a job apply test and it's using pokeapi.co APi.
 
 ## ONLINE DEMO
 
-A demo it's launched at Heroku basic hosting, you can see it here:  [Demo](https://houm-test-pokeapi.herokuapp.com/)
+A demo it's launched at Heroku basic hosting, you can see it here:  [Demo](https://pokemon-houm-test.herokuapp.com/)
 
 ## LOCAL HOST
 
