@@ -18,6 +18,7 @@ const Layout = () => {
     return (
         <BrowserRouter basename={basename}>
             <ScrollToTop>
+                <div className="wrapper">
                 <NavigationBar />
                 <Switch>
                     <Route exact path="/">
@@ -26,14 +27,11 @@ const Layout = () => {
                     <Route exact path="/favoritos">
                         <Favorites/>
                     </Route>
-                    {/* <Route exact path="/vehicles/:uid">
-                        <Vehicle id="uid" />
-                    </Route>
-                    <Route exact path="/planets/:uid">
-                        <Planet id="uid" />
-                    </Route> */}
+                    
                 </Switch>
+                <div className="push"></div>
                 <Footer />
+                </div>
             </ScrollToTop>
         </BrowserRouter>
     );

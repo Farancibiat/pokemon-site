@@ -15,10 +15,10 @@ export const SearchBar = () => {
         onChange={e=>actions.changeGen(e)}
         custom
         >
-            <option value='0'>Elige una Generación</option>
+            <option key={10000} value={0}>Elige una Generación</option>
             {store.generations.map((gen,index)=>{
           return(          
-          <option value={gen.url}>Generación {index+1}</option>
+          <option key={index} value={gen.url}>Generación {index+1}</option>
           )
       })
       }

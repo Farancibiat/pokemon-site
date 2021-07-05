@@ -37,9 +37,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       // variable, so it can be rendered on Pokedex
 
       changeGen: (event) => {
-        console.log(event.target.value);
         if (event.target.value !== 0) {
             setStore({downloadCompleted:false})
+            setStore({activePokemons: []})
           axios
             .get(event.target.value)
             .then((res) => {
@@ -49,6 +49,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             .catch((error) => {
               console.log("a.changeGen error: " + error);
             });
+        }
+        else{
+          setStore({downloadCompleted:false})
         }
       },
       completeData: () => {
@@ -97,7 +100,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             if(pokemon.id!==pokeInfo.id)
             return pokemon
             else
-            return 
+            return ''
         })
         setStore({ favorites: [...aux,pokeInfo] });
               
