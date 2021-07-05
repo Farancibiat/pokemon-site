@@ -13,7 +13,7 @@ export const FavButton = () => {
         <>
             <Dropdown>
                 <Dropdown.Toggle  variant="outline-orange" id="dropdown-basic">
-                    Guardados <span className="badge rounded-pill bg-orange text-light">{store.favorites.length}</span>
+                    Favoritos <span className="badge rounded-pill bg-orange text-light">{store.favorites.length}</span>
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
@@ -21,7 +21,7 @@ export const FavButton = () => {
                         (store.favorites.map((pokemon, ind) => {
 
                             return (
-                                <li>
+                                <li key={ind}>
                                     <Dropdown.Item>
                                         <div className="row">
                                             <div className="col-6">

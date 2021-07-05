@@ -1,15 +1,27 @@
+
 .footer {
-  /* margin-top: 1rem;
-  padding: 1rem; */
   background-color: #f2f3f6;
-  /* position: fixed;  */
-  bottom: 0;
-  /* left: 0; */
-  /* width: 100%; */
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  min-height: 100%;
+
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: -50px;
+}
+.footer,
+.push {
+  height: 150px;
 }
 p {
   color: #616161;
 }
+
+
 .orange-text {
   color: #ff452b !important;
   text-decoration: none;
@@ -17,26 +29,37 @@ p {
 
 /* this is a btn orange CSS with same characteristics as a bootstrap one */
 
-.btn-outline-orange{color:#ff452b;border-color:#ff452b}
-.btn-outline-orange:hover{color:#fff;background-color:#ff452b;border-color:#ff452b}
-.btn-outline-orange.focus,
-.btn-outline-orange:focus{box-shadow:0 0 0 .2rem rgb(255, 66, 41,50%)}
-.btn-outline-orange.disabled,
-.btn-outline-orange:disabled{color:#ff452b;background-color:transparent}
-.btn-outline-orange:not(:disabled):not(.disabled).active,
-.btn-outline-orange:not(:disabled):not(.disabled):active,.show>
-.btn-outline-orange.dropdown-toggle{color:#fff;background-color:#ff452b;border-color:#ff452b}
-.btn-outline-orange:not(:disabled):not(.disabled).active:focus,
-.btn-outline-orange:not(:disabled):not(.disabled):active:focus,.show>
-.btn-outline-orange.dropdown-toggle:focus{box-shadow:0 0 0 .2rem rgb(255, 69, 43,50%)}
-
-
-.btn-orange {
-  box-sizing: border-box;
-  color: #ff452b !important;
-  border-color: rgb(255, 69, 43) !important;
-  border-radius: 10px;
+.btn-outline-orange {
+  color: #ff452b;
+  border-color: #ff452b;
 }
+.btn-outline-orange:hover {
+  color: #fff;
+  background-color: #ff452b;
+  border-color: #ff452b;
+}
+.btn-outline-orange.focus,
+.btn-outline-orange:focus {
+  box-shadow: 0 0 0 0.2rem rgb(255, 66, 41, 50%);
+}
+.btn-outline-orange.disabled,
+.btn-outline-orange:disabled {
+  color: #ff452b;
+  background-color: transparent;
+}
+.btn-outline-orange:not(:disabled):not(.disabled).active,
+.btn-outline-orange:not(:disabled):not(.disabled):active,
+.show > .btn-outline-orange.dropdown-toggle {
+  color: #fff;
+  background-color: #ff452b;
+  border-color: #ff452b;
+}
+.btn-outline-orange:not(:disabled):not(.disabled).active:focus,
+.btn-outline-orange:not(:disabled):not(.disabled):active:focus,
+.show > .btn-outline-orange.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgb(255, 69, 43, 50%);
+}
+
 .bg-orange {
   background-color: #ff452b;
 }
@@ -44,16 +67,14 @@ p {
 .svg-orange {
   fill: #ff452b;
 }
-
-Navbar {
-  box-shadow: #ff452b;
-}
-
 .bg-caption{
-  background-color:#d4d4d4c0;
-  border-radius: 10px;
+  background-color: rgba(247, 247, 247, 0.699);
+  width: fit-content;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 5px;
+  
 }
-
 .carousel-indicators li {
   width: 15px;
   height: 15px;
@@ -71,14 +92,16 @@ li {
 
 /* In this section all the type button colors are configured  */
 
-.btn-fighting, .btn-ground {
+.btn-fighting,
+.btn-ground {
   border-color: rgb(207, 103, 5);
   color: rgb(128, 62, 0);
   padding: 0px 4px 2px 4px;
   border-radius: 11px;
 }
 
-.btn-fighting:hover, .btn-ground:hover {
+.btn-fighting:hover,
+.btn-ground:hover {
   background-color: rgb(207, 103, 5);
   color: white;
 }

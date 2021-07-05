@@ -1,6 +1,17 @@
 import React, { useContext, useState } from "react";
+
 import { Context } from "../store/appContext";
-import { Card, Button, Carousel, Modal, Container, Row, Col, Table} from "react-bootstrap";
+import {
+  Card,
+  Button,
+  Carousel,
+  Modal,
+  Container,
+  Row,
+  Col,
+  Form,
+  Table,
+} from "react-bootstrap";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TypeDesign } from "./typeDesign";
@@ -52,30 +63,38 @@ export const PokeCard = (props) => {
             </Col>
           </Row>
           <Row className="mx-0 text-center">
-            {props.info.types.map((type) => {
+            {props.info.types.map((type, index) => {
               return (
-                <Col sm={6} className="px-0">
-                  <TypeDesign type={type.type.name} url={type.type.url} />
+                <Col key={index} sm={6} className="px-0">
+                  <TypeDesign
+                    key={`k${index}`}
+                    type={type.type.name}
+                    url={type.type.url}
+                  />
                 </Col>
               );
             })}
           </Row>
-          <Row className="my-3 mx-0">
-            <Col sm={6}>
+          <Row className="my-3 mx-0 text-center">
+            <Col className="py-1" sm={6}>
               <Button variant="outline-orange" onClick={handleShow}>
                 Detalles
               </Button>
             </Col>
 
-            <Col sm={6} className="text-center">
-            {window.location.href.split("/")[window.location.href.split("/").length-1]==='favoritos'?<></>:
-              <Button
-                variant="outline-orange"
-                onClick={() => actions.addFav(props.info)}
-              >
-                <FontAwesomeIcon icon={faHeart} />
-              </Button>
-}
+            <Col sm={6} className="py-1">
+              {window.location.href.split("/")[
+                window.location.href.split("/").length - 1
+              ] === "favoritos" ? (
+                <></>
+              ) : (
+                <Button
+                  variant="outline-orange"
+                  onClick={() => actions.addFav(props.info)}
+                >
+                  <FontAwesomeIcon icon={faHeart} />
+                </Button>
+              )}
             </Col>
           </Row>
         </Container>
@@ -91,64 +110,128 @@ export const PokeCard = (props) => {
         </Modal.Header>
         <Modal.Body>
           <Carousel interval={null}>
-            {Object.keys(store.sprites).map((spriteName) => {
-              if (!props.info.sprites[spriteName]){
-                return none;
+            {Object.keys(store.sprites).map((spriteName, index) => {
+              if (!props.info.sprites[spriteName]) {
+                return "";
               } else {
                 return (
-                  <Carousel.Item >
+                  <Carousel.Item key={index}>
                     <img
                       className="d-block w-50 mx-auto"
                       src={props.info.sprites[spriteName]}
                       alt="Pokemon"
                     />
                     <Carousel.Caption>
-                    <h5 className="orange-text bg-caption">{store.sprites[spriteName]}</h5>
-                  </Carousel.Caption>
+                      <h5 className="orange-text bg-caption">
+                        {store.sprites[spriteName]}
+                      </h5>
+                    </Carousel.Caption>
                   </Carousel.Item>
-                  
                 );
               }
             })}
           </Carousel>
-          <Row><Col className="text-center"><div className="text-muted">"{props.info.flavor_text_entries.filter((texts=>
-            !texts.language.name.localeCompare('es')))[0].flavor_text}"</div></Col></Row>
-          <Row className="my-3">
-            <Col className="d-flex">
-            <h3 className="mr-3">Tipo:</h3>
-          {props.info.types.map((type) => {
-              return (
-                  <TypeDesign type={type.type.name} url={type.type.url} />
-                
-              );
-            })}
+          <Row>
+            <Col className="text-center">
+              <div className="text-muted">
+                "
+                {
+                  [
+                    ...props.info.flavor_text_entries.filter((texts, index) => {
+                      return !texts.language.name.localeCompare("es");
+                    }),
+                    "",
+                  ][0].flavor_text
+                }
+                "
+              </div>
             </Col>
-            </Row>
-            <Row>
-              <Table></Table>
-            {props.info.moves.map((move, index)=>{
-             
-            })}
-            </Row>
-          <h1>text1</h1>
-          <h1>text1</h1>
-          <h1>text1</h1>
-          <h1>text1</h1>
+          </Row>
+          <Row className="mt-4">
+            <Col className="d-flex">
+              <h3 className="mr-3">Tipo:</h3>
+              {props.info.types.map((type, index) => {
+                return (
+                  <TypeDesign
+                    key={index}
+                    type={type.type.name}
+                    url={type.type.url}
+                  />
+                );
+              })}
+            </Col>
+          </Row>
+          <Row className="mt-5">
+            <Col>
+              <Table className="text-center" striped bordered hover size="sm">
+                <thead>
+                  <tr>
+                    <th>N° Pokedéx</th>
+                    <th>Es bebé</th>
+                    <th>Es Legendario</th>
+                    <th>Es Mítico</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{props.info.id}</td>
+                    <td>{props.info.is_baby ? "Si" : "No"}</td>
+                    <td>{props.info.is_legendary ? "Si" : "No"}</td>
+                    <td>{props.info.is_mythical ? "Si" : "No"}</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Label>
+                  Revisa los movimientos que puede aprender este pokemón
+                </Form.Label>
+                <Form.Control as="select" multiple>
+                  {props.info.moves
+                    .sort((a, b) => {
+                      if (a.move.name.localeCompare(b.move.name) < 0) return -1;
+                      if (a.move.name.localeCompare(b.move.name) > 0) return 1;
+                      if (a.move.name.localeCompare(b.move.name) === 0)
+                        return 0;
+                    })
+                    .map((move, index) => {
+                      return (
+                        <option key={index}>
+                          {move.move.name.charAt(0).toUpperCase() +
+                            move.move.name.slice(1)}
+                        </option>
+                      );
+                    })}
+                </Form.Control>
+              </Form.Group>
+            </Col>
+          </Row>
           
-          <h1>text1</h1>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="outline-orange" onClick={handleClose}>
             Cerrar
           </Button>
-          {window.location.href.split("/")[window.location.href.split("/").length-1]==='favoritos'?<></>:
-          <Button
-            variant="outline-orange"
-            onClick={() => actions.addFav(props.info)}
-          >{window.location.href.split("/")[window.location.href.split("/").length-1]}
-            <FontAwesomeIcon icon={faHeart} />
-          </Button>
-          }
+          {window.location.href.split("/")[
+            window.location.href.split("/").length - 1
+          ] === "favoritos" ? (
+            <></>
+          ) : (
+            <Button
+              variant="outline-orange"
+              onClick={() => actions.addFav(props.info)}
+            >
+              {
+                window.location.href.split("/")[
+                  window.location.href.split("/").length - 1
+                ]
+              }
+              <FontAwesomeIcon icon={faHeart} />
+            </Button>
+          )}
         </Modal.Footer>
       </Modal>
     </>

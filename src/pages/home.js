@@ -5,7 +5,8 @@ export const Home = () => {
     return (
         <>
         <SearchBar/>
-        <Pokedex/>       
+        <Pokedex/>
+        
         </>
     );
 };

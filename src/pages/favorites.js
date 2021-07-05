@@ -4,7 +4,7 @@ export const Favorites = () => {
     return (
         <>
         <FavPokedex/>
-            
+          
         </>
     );
 };

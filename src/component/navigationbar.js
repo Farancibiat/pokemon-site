@@ -14,11 +14,9 @@ export const NavigationBar = () => {
     <>
       <Navbar expand="lg">
         <div className="container">
-          <Navbar.Brand href="#home">
             <Link className="text-center orange-text" to="/">
               <img src={logo} alt="Pokemón logo" width="180" />
             </Link>
-          </Navbar.Brand>
           <Navbar.Toggle
             className="btn-orange orange-text"
             variant="outline-light"
