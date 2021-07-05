@@ -18,7 +18,14 @@ export const Pokedex = () => {
               <img src={pokedex} alt="Loader Gif" width="200" />{" "}
             </div>
           ) : (store.downloadCompleted?
-             store.activePokemons.map((pokemon, index) => {
+             store.activePokemons.filter((poke)=>{
+               if(store.search==="")
+                 return poke;
+                 else if(poke.name.includes(store.search.toLowerCase()))
+                 return poke;
+               
+             }).map((pokemon, index) => {
+        
                return <li key={index}><PokeCard key={index} info={pokemon}/></li>
              })
             :<div className="text-center my-auto mx-auto"><img  src={pokeball} alt="Pokeball"/></div>
