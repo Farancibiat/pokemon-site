@@ -13,9 +13,10 @@ Also, you can clone the project at your computer, open the project on a terminal
 
 This install the dependencies node modules
 ### 1.`npm i`
-once the specific node modules are ready you can open the project as a local server with:
 
- `npm start`
+Once the specific node modules are ready you can open the project as a local server with:
+### 2.`npm start`
+
 
 Wich Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
