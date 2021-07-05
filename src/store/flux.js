@@ -38,8 +38,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       // variable, so it can be rendered on Pokedex
 
       changeGen: (event) => {
+        getActions().resetActivePokemons()
+        setStore({downloadCompleted:false})
         if (event.target.value !== 0) {
-            setStore({downloadCompleted:false})
             setStore({activePokemons: []})
           axios
             .get(event.target.value)
@@ -51,12 +52,12 @@ const getState = ({ getStore, getActions, setStore }) => {
               console.log("a.changeGen error: " + error);
             });
         }
-        else{
-          setStore({downloadCompleted:false})
-        }
       },
       setSearch:(name)=>{
         setStore({search: name})
+      },
+      resetActivePokemons:()=>{
+        setStore({search: ""})
       },
       completeData: () => {
         let receiptedFetchs=0;
