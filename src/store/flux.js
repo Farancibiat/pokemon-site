@@ -7,18 +7,39 @@ const getState = ({ getStore, getActions, setStore }) => {
       generations: [],
       activePokemons: [],
       downloadCompleted: false,
-      search:"",
-      esTypeNames:['Normal','Lucha','Volador','Veneno','Tierra','Roca','Bicho','Fantasma','Acero','Fuego','Agua','Planta','Eléctrico','Psíquico','Hielo','Dragón','Siniestro','Hada','???','Sombra'],
-      sprites:{
-        'front_default': 'Frente Estandar',
-        'back_default': 'Atrás Estandar',
-        'front_female':'Frente Hembra Estandar',
-        'back_female': 'Atras Hembra Estandar',
-        'front_shiny': "Frente Shiny",
-        'back_shiny': 'Atrás Shiny',
-        'front_female_shiny':'Frente Hembra Shiny',
-        'back_female_shiny': 'Atras Hembra Shiny',
-      }
+      search: "",
+      esTypeNames: [
+        "Normal",
+        "Lucha",
+        "Volador",
+        "Veneno",
+        "Tierra",
+        "Roca",
+        "Bicho",
+        "Fantasma",
+        "Acero",
+        "Fuego",
+        "Agua",
+        "Planta",
+        "Eléctrico",
+        "Psíquico",
+        "Hielo",
+        "Dragón",
+        "Siniestro",
+        "Hada",
+        "???",
+        "Sombra",
+      ],
+      sprites: {
+        front_default: "Frente Estandar",
+        back_default: "Atrás Estandar",
+        front_female: "Frente Hembra Estandar",
+        back_female: "Atras Hembra Estandar",
+        front_shiny: "Frente Shiny",
+        back_shiny: "Atrás Shiny",
+        front_female_shiny: "Frente Hembra Shiny",
+        back_female_shiny: "Atras Hembra Shiny",
+      },
     },
     actions: {
       // loadGenerations loads the generations data [{name: ?, url:?},...]
@@ -38,10 +59,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       // variable, so it can be rendered on Pokedex
 
       changeGen: (event) => {
-        getActions().resetActivePokemons()
-        setStore({downloadCompleted:false})
-        if (event.target.value !== 0) {
-            setStore({activePokemons: []})
+        getActions().resetActivePokemons();
+        setStore({ downloadCompleted: false });
+        if (parseInt(event.target.value) === 0) 
+          setStore({ activePokemons: [] });
+         else {
           axios
             .get(event.target.value)
             .then((res) => {
@@ -53,14 +75,14 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
         }
       },
-      setSearch:(name)=>{
-        setStore({search: name})
+      setSearch: (name) => {
+        setStore({ search: name });
       },
-      resetActivePokemons:()=>{
-        setStore({search: ""})
+      resetActivePokemons: () => {
+        setStore({ search: "" });
       },
       completeData: () => {
-        let receiptedFetchs=0;
+        let receiptedFetchs = 0;
         getStore().activePokemons.forEach((pokeRef, arrIndex) => {
           let details = {};
           let aux = pokeRef.url.split("/");
@@ -74,19 +96,16 @@ const getState = ({ getStore, getActions, setStore }) => {
                 .get(`https://pokeapi.co/api/v2/pokemon-species/${index}`)
                 .then((answ) => {
                   Object.assign(details, answ.data);
-                  Object.assign(details,{isFav:false})
+                  Object.assign(details, { isFav: false });
                   Object.assign(getStore().activePokemons[arrIndex], details);
-                  receiptedFetchs++
-                  if(receiptedFetchs===(getStore().activePokemons.length)){
-                  getStore().activePokemons.sort((a,b)=>{
-                      if(a.id<b.id)
-                      return -1
-                      if(a.id<b.id)
-                      return 1
-                      else
-                      return 0
-                  })
-                  setStore({downloadCompleted:true})
+                  receiptedFetchs++;
+                  if (receiptedFetchs === getStore().activePokemons.length) {
+                    getStore().activePokemons.sort((a, b) => {
+                      if (a.id < b.id) return -1;
+                      if (a.id < b.id) return 1;
+                      else return 0;
+                    });
+                    setStore({ downloadCompleted: true });
                   }
                 })
                 .catch((err) => {
@@ -100,21 +119,21 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       addFav: (pokeInfo) => {
-        let aux=getStore().favorites.filter((pokemon)=>{
-          console.log(pokeInfo)
-            if(pokemon.id!==pokeInfo.id)
-            return pokemon
-            else
-            return ''
-        })
-        setStore({ favorites: [...aux,pokeInfo] });
-              
+        let aux = getStore().favorites.filter((pokemon) => {
+          console.log(pokeInfo);
+          if (pokemon.id !== pokeInfo.id) return pokemon;
+          else return "";
+        });
+        setStore({ favorites: [...aux, pokeInfo] });
       },
 
       delFav: (pokeInfo) => {
-        setStore({ favorites: getStore().favorites.filter((item) => (item.id !== pokeInfo.id)) });
-            
-      }
+        setStore({
+          favorites: getStore().favorites.filter(
+            (item) => item.id !== pokeInfo.id
+          ),
+        });
+      },
     },
   };
 };
