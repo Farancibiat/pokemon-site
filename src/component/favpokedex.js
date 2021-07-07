@@ -20,7 +20,7 @@ useEffect(()=>actions.resetActivePokemons(),[])
             </div>
           ) : 
              store.favorites.map((pokemon, index) => {
-               return <li key={index}><PokeCard key={index} info={pokemon}/></li>
+               return <li className='mx-3 my-2' key={index}><PokeCard key={index} info={pokemon}/></li>
              })
             }
         </div>

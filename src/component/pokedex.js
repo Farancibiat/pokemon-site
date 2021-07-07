@@ -9,12 +9,12 @@ export const Pokedex = () => {
 
   return (
     <>
-      <div className="container pt-3 ">
+      <div className="container pt-3 px-0 ">
         <h1 className="orange-text text-center">Pokedex</h1>
-        <div className="row justify-content-center d-flex mb-5">
+        <div className="row mx-auto justify-content-center mb-5">
           {store.activePokemons.length === 0 ? (
             <div className="text-center">
-              <p className=" px-5 ">Selecciona generación para empezar...</p>
+              <p className=" px-auto ">Selecciona generación para empezar...</p>
               <img src={pokedex} alt="Loader Gif" width="200" />{" "}
             </div>
           ) : store.downloadCompleted ? (
@@ -26,7 +26,7 @@ export const Pokedex = () => {
               })
               .map((pokemon, index) => {
                 return (
-                  <li key={index}>
+                  <li className='mx-3 my-2' key={index}>
                     <PokeCard key={index} info={pokemon} />
                   </li>
                 );

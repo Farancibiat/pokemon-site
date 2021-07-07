@@ -1,26 +1,46 @@
-
 .footer {
   background-color: #f2f3f6;
+  height: 150px;
 }
 html, body {
   height: 100%;
-  margin: 0;
+  margin: 0 !important;
 }
 .wrapper {
   min-height: 100%;
-
-  /* Equal to height of footer */
-  /* But also accounting for potential margin-bottom of last child */
   margin-bottom: -50px;
 }
-.footer,
+
 .push {
-  height: 150px;
+  height:210px;
+}
+
+.navbar {
+  background-color: #f7f7f7;
+  position: sticky;
+  top: 0;
+  z-index: 2 !important;
+}
+
+.scrollTop {
+  position: fixed;
+  width: 60px;
+  padding: 5px;
+  right: 10%;
+  bottom: 40px;
+  border-color: rgb(253, 106, 86);
+  z-index: 1;
+  cursor: pointer;
+  color: #ff452b !important;
+  background-color: #f7f7f7a4 !important;
+}
+
+.scrollTop:hover {
+  border-color: #7e281c;
 }
 p {
   color: #616161;
 }
-
 
 .orange-text {
   color: #ff452b !important;
@@ -67,13 +87,15 @@ p {
 .svg-orange {
   fill: #ff452b;
 }
-.bg-caption{
+.bg-caption {
   background-color: rgba(247, 247, 247, 0.699);
   width: fit-content;
   margin-left: auto !important;
   margin-right: auto !important;
   border-radius: 5px;
-  
+}
+.carousel-indicators{
+  z-index: 1 !important;
 }
 .carousel-indicators li {
   width: 15px;
@@ -84,6 +106,10 @@ p {
 
 li {
   list-style-type: none;
+}
+
+.PokeCard{
+  width: 240px !important;
 }
 
 .PokeCard:hover {
@@ -261,4 +287,9 @@ li {
   border-color: #343a40;
   padding: 0px 4px 2px 4px;
   border-radius: 11px;
+}
+.back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
 }

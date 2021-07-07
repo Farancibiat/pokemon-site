@@ -6,7 +6,7 @@ export const SearchBar = () => {
   const { store, actions } = useContext(Context);
   return (
     <>
-      <div className="jumbotron orange-text container">
+      <div className="jumbotron orange-text container shadow mt-3">
         <h1>Búsqueda Pókemon</h1>
         <div>{store.generation}</div>
         <p>Elige que generación vamos a investigar:</p>

@@ -11,10 +11,10 @@ export const NavigationBar = () => {
 
   return (
     <>
-      <Navbar expand="lg">
+      <Navbar expand="lg" className="nav-bar shadow">
         <div className="container">
             <Link className="text-center orange-text" to="/">
-              <img src={logo} alt="Pokemón logo" width="180" />
+              <img className="py-1"src={logo} alt="Pokemón logo" width="180" />
             </Link>
           <Navbar.Toggle
             className="btn-orange orange-text"

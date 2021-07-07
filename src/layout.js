@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import injectContext from "./store/appContext";
 
+import ButtonTop from "./component/buttontop"
 import "./styles/App.css";
 import { Home } from "./pages/home"
 import { Favorites } from "./pages/favorites"
@@ -20,6 +21,7 @@ const Layout = () => {
             <ScrollToTop>
                 <div className="wrapper">
                 <NavigationBar />
+                
                 <Switch>
                     <Route exact path="/">
                         <Home />
@@ -30,6 +32,7 @@ const Layout = () => {
                     
                 </Switch>
                 <div className="push"></div>
+                <ButtonTop/>
                 <Footer />
                 </div>
             </ScrollToTop>

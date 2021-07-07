@@ -24,7 +24,7 @@ export const PokeCard = (props) => {
 
   return (
     <>
-      <Card className="PokeCard mx-3 my-3" style={{ width: "180px" }}>
+      <Card className="PokeCard shadow" >
         <Card.Header className="py-0 px-0">
           <Carousel interval={null}>
             <Carousel.Item>
