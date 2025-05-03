@@ -22,6 +22,9 @@ export const PokeCard = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // Verificar si el Pokémon está en favoritos
+  const isInFavorites = store.favorites.some(fav => fav.id === props.info.id);
+
   return (
     <>
       <Card className="PokeCard shadow" >
@@ -83,18 +86,15 @@ export const PokeCard = (props) => {
             </Col>
 
             <Col sm={6} className="py-1">
-              {window.location.href.split("/")[
-                window.location.href.split("/").length - 1
-              ] === "favoritos" ? (
-                <></>
-              ) : (
+           
                 <Button
-                  variant="outline-orange"
-                  onClick={() => actions.addFav(props.info)}
+                  variant={isInFavorites ? "" : "outline-orange"}
+                  onClick={() => isInFavorites ? actions.delFav(props.info) : actions.addFav(props.info)}
+                  className={isInFavorites ? "btn-outline-orange-fav" : ""}
                 >
                   <FontAwesomeIcon icon={faHeart} />
                 </Button>
-              )}
+            
             </Col>
           </Row>
         </Container>
@@ -191,12 +191,7 @@ export const PokeCard = (props) => {
                 </Form.Label>
                 <Form.Control as="select" multiple>
                   {props.info.moves
-                    .sort((a, b) => {
-                      if (a.move.name.localeCompare(b.move.name) < 0) return -1;
-                      if (a.move.name.localeCompare(b.move.name) > 0) return 1;
-                      if (a.move.name.localeCompare(b.move.name) === 0)
-                        return 0;
-                    })
+                    .sort((a, b) => a.move.name.localeCompare(b.move.name))
                     .map((move, index) => {
                       return (
                         <option key={index}>
@@ -221,14 +216,10 @@ export const PokeCard = (props) => {
             <></>
           ) : (
             <Button
-              variant="outline-orange"
-              onClick={() => actions.addFav(props.info)}
+              variant={isInFavorites ? "orange" : "outline-orange"}
+              onClick={() => isInFavorites ? actions.delFav(props.info) : actions.addFav(props.info)}
+              className={isInFavorites ? "text-white" : ""}
             >
-              {
-                window.location.href.split("/")[
-                  window.location.href.split("/").length - 1
-                ]
-              }
               <FontAwesomeIcon icon={faHeart} />
             </Button>
           )}

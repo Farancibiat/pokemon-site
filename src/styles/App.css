@@ -49,11 +49,11 @@ p {
 
 /* this is a btn orange CSS with same characteristics as a bootstrap one */
 
-.btn-outline-orange {
+.btn-outline-orange, .btn-outline-orange-fav:hover {
   color: #ff452b;
   border-color: #ff452b;
 }
-.btn-outline-orange:hover {
+.btn-outline-orange-fav, .btn-outline-orange:hover {
   color: #fff;
   background-color: #ff452b;
   border-color: #ff452b;

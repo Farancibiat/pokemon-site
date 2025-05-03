@@ -6,7 +6,7 @@ import HoumLogo from "../img/loader.gif";
 export const FavPokedex = () => {
   const { store, actions } = useContext(Context);
   
-useEffect(()=>actions.resetActivePokemons(),[])
+  useEffect(()=>actions.resetActivePokemons(),[actions])
 
   return (
     <>
@@ -18,11 +18,17 @@ useEffect(()=>actions.resetActivePokemons(),[])
               <p className=" px-5 ">Vuelve al inicio y agrega pokemones a Favoritos</p>
               <img src={HoumLogo} alt="Loader Gif" width="200" />{" "}
             </div>
-          ) : 
-             store.favorites.map((pokemon, index) => {
-               return <li className='mx-3 my-2' key={index}><PokeCard key={index} info={pokemon}/></li>
-             })
-            }
+          ) : (
+            <div className="row">
+              {store.favorites.map((pokemon, index) => {
+                return (
+                  <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-3" key={index}>
+                    <PokeCard key={`card-${index}`} info={pokemon} />
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </>

@@ -36,7 +36,7 @@ const injectContext = PassedComponent => {
             // }
 
 
-        }, []);
+        }, [state.actions]);
         // the context will now have a getStore, getActions and setStore functions available, because they were declared
         // on the state of this component
         return (

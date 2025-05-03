@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import injectContext from "./store/appContext";
 
@@ -20,20 +20,14 @@ const Layout = () => {
         <BrowserRouter basename={basename}>
             <ScrollToTop>
                 <div className="wrapper">
-                <NavigationBar />
-                
-                <Switch>
-                    <Route exact path="/">
-                        <Home />
-                    </Route>
-                    <Route exact path="/favoritos">
-                        <Favorites/>
-                    </Route>
-                    
-                </Switch>
-                <div className="push"></div>
-                <ButtonTop/>
-                <Footer />
+                    <NavigationBar />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/favoritos" element={<Favorites />} />
+                    </Routes>
+                    <div className="push"></div>
+                    <ButtonTop />
+                    <Footer />
                 </div>
             </ScrollToTop>
         </BrowserRouter>
