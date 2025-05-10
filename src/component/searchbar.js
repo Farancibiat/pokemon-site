@@ -6,14 +6,13 @@ export const SearchBar = () => {
   const { store, actions } = useContext(Context);
   return (
     <>
-      <div className="jumbotron orange-text container shadow mt-3">
+      <div className="jumbotron orange-text container shadow mt-3 p-3 rounded">
         <h1>Búsqueda Pókemon</h1>
         <div>{store.generation}</div>
         <p>Elige que generación vamos a investigar:</p>
         <Form.Control
         as="select"
         onChange={e=>actions.changeGen(e)}
-        custom
         >
             <option key={10000} value={0}>Elige una Generación</option>
             {store.generations.map((gen,index)=>{

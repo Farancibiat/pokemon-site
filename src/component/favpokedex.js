@@ -6,7 +6,8 @@ import HoumLogo from "../img/loader.gif";
 export const FavPokedex = () => {
   const { store, actions } = useContext(Context);
   
-  useEffect(()=>actions.resetActivePokemons(),[actions])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(()=>actions.resetActivePokemons(),[])
 
   return (
     <>

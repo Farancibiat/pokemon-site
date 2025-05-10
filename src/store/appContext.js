@@ -36,7 +36,8 @@ const injectContext = PassedComponent => {
             // }
 
 
-        }, [state.actions]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
         // the context will now have a getStore, getActions and setStore functions available, because they were declared
         // on the state of this component
         return (
